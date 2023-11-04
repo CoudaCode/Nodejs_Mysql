@@ -7,7 +7,8 @@ import userRoute from "./routes/users.js";
 import tacheRoute from "./routes/tache.js";
 import {serve,setup} from "swagger-ui-express";
 
-import swaggerFile from "./utils/swagger.json";
+import swaggerFile from "./utils/swagger.json" assert { type: "json" };
+
 
 config({
   path: path.join(process.cwd(), ".env.local"),
