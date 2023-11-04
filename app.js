@@ -7,7 +7,8 @@ import userRoute from "./routes/users.js";
 import tacheRoute from "./routes/tache.js";
 import {serve,setup} from "swagger-ui-express";
 
-import swagerFIle from "./utils/swagger.json" assert { type: "json" };
+import swaggerFile from "./utils/swagger.json";
+
 config({
   path: path.join(process.cwd(), ".env.local"),
 });
@@ -17,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use("/api-docs", serve, setup(swagerFIle))
+app.use("/api-docs", serve, setup(swaggerFile))
 
 connectDB.connect((err) => {
   if (err) {
