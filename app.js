@@ -19,7 +19,6 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use("/api-docs", serve, setup(swaggerFile))
 
 connectDB.connect((err) => {
   if (err) {
@@ -40,3 +39,4 @@ connectDB.connect((err) => {
 });
 app.use("/api/users", userRoute);
 app.use("/api/taches", tacheRoute);
+app.use("/", serve, setup(swaggerFile))
