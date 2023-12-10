@@ -5,10 +5,9 @@ import sequelize from "./config/sequelize.js";
 import path from "path";
 import userRoute from "./routes/users.js";
 import tacheRoute from "./routes/tache.js";
-import {serve,setup} from "swagger-ui-express";
-
+import { serve, setup } from "swagger-ui-express";
+import cors from "cors";
 import swaggerFile from "./utils/swagger.json" assert { type: "json" };
-
 
 config({
   path: path.join(process.cwd(), ".env.local"),
@@ -16,6 +15,7 @@ config({
 
 const PORT = process.env.DB_PORT;
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -39,4 +39,4 @@ connectDB.connect((err) => {
 });
 app.use("/api/users", userRoute);
 app.use("/api/taches", tacheRoute);
-app.use("/", serve, setup(swaggerFile))
+app.use("/", serve, setup(swaggerFile));
