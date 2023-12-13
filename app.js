@@ -8,6 +8,7 @@ import tacheRoute from "./routes/tache.js";
 import { serve, setup } from "swagger-ui-express";
 import cors from "cors";
 import swaggerFile from "./utils/swagger.json" assert { type: "json" };
+import cookieParser from "cookie-parser";
 
 config({
   path: path.join(process.cwd(), ".env.local"),
@@ -19,7 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-
+app.use(cookieParser());
 connectDB.connect((err) => {
   if (err) {
     console.log(err);

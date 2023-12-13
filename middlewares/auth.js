@@ -8,7 +8,6 @@ import { verifyToken } from "../utils/token.js";
 
 const withUser = (req, res, next) => {
   const token = req.headers.authorization.split(" ")[1];
-
   const verification = verifyToken(token);
   if (verification) {
     req.user = verification;

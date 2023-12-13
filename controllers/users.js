@@ -171,7 +171,7 @@ class UsersController {
         res.cookie("token", generateToken(user.id));
         return res.status(200).json({
           statut: true,
-          message: "connexion reussi",
+          message: user,
           token: generateToken(user.id),
         });
       }
