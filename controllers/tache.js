@@ -13,6 +13,7 @@ class TacheController {
       const { userId, ...body } = req.body;
 
       const auth = req.user;
+      console.log("auth", auth);
       const tache = await Tache.create({
         userId: auth.id,
         ...body,

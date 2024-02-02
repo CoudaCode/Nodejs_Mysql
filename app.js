@@ -1,14 +1,14 @@
-import express from "express";
+import cookieParser from "cookie-parser";
+import cors from "cors";
 import { config } from "dotenv";
+import express from "express";
+import path from "path";
+// import { serve, setup } from "swagger-ui-express";
 import { connectDB } from "./config/db.js";
 import sequelize from "./config/sequelize.js";
-import path from "path";
-import userRoute from "./routes/users.js";
 import tacheRoute from "./routes/tache.js";
-import { serve, setup } from "swagger-ui-express";
-import cors from "cors";
-import swaggerFile from "./utils/swagger.json" assert { type: "json" };
-import cookieParser from "cookie-parser";
+import userRoute from "./routes/users.js";
+// import swaggerFile from "./utils/swagger.json" assert { type: "json" };
 
 config({
   path: path.join(process.cwd(), ".env.local"),
@@ -40,4 +40,4 @@ connectDB.connect((err) => {
 });
 app.use("/api/users", userRoute);
 app.use("/api/taches", tacheRoute);
-app.use("/", serve, setup(swaggerFile));
+// app.use("/", serve, setup(swaggerFile));
