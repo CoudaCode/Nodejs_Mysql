@@ -13,7 +13,6 @@ class TacheController {
       const { userId, ...body } = req.body;
 
       const auth = req.user;
-      console.log("auth", auth);
       const tache = await Tache.create({
         userId: auth.id,
         ...body,
@@ -43,8 +42,6 @@ class TacheController {
       const auth = req.user;
 
       const tache = await Tache.findByPk(id);
-      console.log("auth", auth.id);
-      console.log("userId", tache.userId);
       if (tache.userId !== auth.id) {
         return res
           .status(400)

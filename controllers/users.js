@@ -70,7 +70,7 @@ class UsersController {
   static async getUser(req, res) {
     try {
       const { id } = req.params;
-      console.log(id);
+
       const user = await User.findByPk(id);
 
       if (!user) {
