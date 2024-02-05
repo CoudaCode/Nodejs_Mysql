@@ -17,15 +17,16 @@ config({
 const PORT = process.env.DB_PORT;
 const app = express();
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true, // autoriser les cookies
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  optionsSuccessStatus: 204,
-  allowedHeaders: "Content-Type, Authorization",
-};
+// const corsOptions = {
+//   origin: "http://localhost:5173",
+//   credentials: true, // autoriser les cookies
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: "Content-Type, Authorization",
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
