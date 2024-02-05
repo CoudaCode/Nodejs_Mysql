@@ -17,7 +17,7 @@ config({
 const PORT = process.env.DB_PORT;
 const app = express();
 const corsOptions = {
- origin: "http://localhost:5173",
+ origin: "https://mytodolist-2i6c.onrender.com",
   credentials: true, // autoriser les cookies
    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 204,
